@@ -1,0 +1,13 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+    std::unordered_map<int,int> lmao;
+    for(int i=0;i<nums.size();i++){
+        if(lmao.contains(target-nums[i])){
+            return {lmao[target-nums[i]],i};
+        }
+        lmao[nums[i]]=i;
+    } 
+    return {0,0}; 
+    }
+};
