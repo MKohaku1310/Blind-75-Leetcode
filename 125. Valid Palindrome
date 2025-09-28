@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        if (s.empty()) return true;
+
+        vector<char> v;
+        for (int i = 0; i < s.size(); i++) {
+            if (isalnum(s[i])) { 
+                v.push_back(tolower(s[i]));
+            }
+        }
+
+        int l = 0, r = v.size() - 1;
+        while (l < r) {
+            if (v[l] != v[r]) return false;
+            l++;
+            r--;
+        }
+        return true;
+    }
+};
