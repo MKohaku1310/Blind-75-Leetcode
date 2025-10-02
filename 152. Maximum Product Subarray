@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        if(nums.empty()){
+            return 0;
+        }
+        long long max1 = nums[0];
+        long long minend = nums[0];
+        long long maxend = nums[0];
+        for(int i=1;i<nums.size();i++){
+            long long check = nums[i];
+            long long tmp = maxend;
+            maxend = max({check,check*tmp,check*minend});
+            minend = min({check,check*tmp,check*minend});
+            max1 = max(max1,maxend);
+        }
+        return static_cast<int>(max1);
+    }
+};
