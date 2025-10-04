@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        int trai = 0;
+        int phai = nums.size()-1;
+        if(nums[trai]<=nums[phai]){
+            return nums[trai];
+        }
+        while(trai < phai){
+            int giua = trai + (phai-trai)/2;
+            if(nums[giua]>nums[phai]){
+                trai = giua + 1;
+            }
+            else {
+                phai = giua;
+            }
+        }
+        return nums[trai];
+    }
+};
