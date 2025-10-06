@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<vector<int>> check;
+        vector<int> cur;
+        sort(candidates.begin(),candidates.end());
+        Try(candidates,target,0,cur,check);
+        return check;
+    }
+private:
+    void Try(vector<int>& candidates, int r_target,int st,vector<int>& cur,vector<vector<int>>& check){
+        if(r_target == 0){
+            check.push_back(cur);
+            return;
+        }
+        if(r_target<0) return;
+        for(int i=st;i<candidates.size();i++){
+            int can = candidates[i];
+            if(can>r_target){
+                break;
+            }
+            cur.push_back(can);
+            Try(candidates,r_target-can,i,cur,check);
+            cur.pop_back();
+        }
+    }
+};
